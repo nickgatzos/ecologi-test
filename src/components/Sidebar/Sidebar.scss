@@ -1,0 +1,60 @@
+@import "src/sass/variables";
+
+.sidebar-content {
+  padding: 1rem 0;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+
+    &:hover {
+      background: $dark-alt;
+    }
+  }
+
+  img {
+    height: 55px;
+  }
+}
+
+.sidebar {
+  & > div {
+    background: $dark;
+  }
+
+  .MuiListItem-button {
+    color: $light-alt;
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+
+    &:hover {
+      background: $dark-alt;
+      color: white;
+    }
+
+    &.Mui-selected {
+      background: $dark-alt;
+      color: white;
+
+      &:hover {
+        background: $dark-hover;
+      }
+
+      &:before {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        width: 8px;
+        background-color: $green;
+        content: "";
+      }
+    }
+  }
+}
