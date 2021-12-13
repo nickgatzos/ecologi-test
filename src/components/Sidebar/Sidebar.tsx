@@ -1,7 +1,13 @@
 import { Toolbar, Divider, List, ListItem, Box, Drawer } from '@mui/material';
 import './Sidebar.scss';
 
-const Sidebar = ({mobileOpen, drawerWidth, handleDrawerToggle}) => {
+interface Props {
+  mobileOpen: boolean,
+  drawerWidth: number,
+  handleDrawerToggle: any
+}
+
+const Sidebar = ({mobileOpen, drawerWidth, handleDrawerToggle}: Props) => {
   const drawer = (
     <div className="sidebar-content">
       <Toolbar>

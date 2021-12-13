@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 // Components
 import Sidebar from './components/Sidebar/Sidebar';
+import Home from './pages/Home/Home';
 
 // Styling
 import './App.scss';
@@ -19,33 +20,44 @@ const App = () => {
   };
 
   return (
+
+
     <div className="App">
-      <CssBaseline />
-      <Box sx={{display: 'flex'}}>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline/>
+
         <AppBar
           position="fixed"
           sx={{
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-            ml: { sm: `${drawerWidth}px` },
-          }}
-        >
+            width: {sm: `calc(100% - ${drawerWidth}px)`},
+            ml: {sm: `${drawerWidth}px`},
+          }}>
           <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={{mr: 2, display: {sm: 'none'}}}
             >
-              <MenuIcon />
+              <MenuIcon/>
             </IconButton>
             <Typography variant="h6" noWrap component="div">
               Responsive drawer
             </Typography>
           </Toolbar>
         </AppBar>
+
+        <Sidebar drawerWidth={drawerWidth} mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle}/>
+
+        <Box
+          component="main"
+          sx={{flexGrow: 1, width: {sm: `calc(100% - ${drawerWidth}px)`}}}
+        >
+          <Toolbar/>
+          <Home/>
+        </Box>
       </Box>
-      <Sidebar drawerWidth={drawerWidth} mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle}/>
     </div>
   );
 };
