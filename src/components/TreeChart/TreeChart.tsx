@@ -14,11 +14,11 @@ import {
 } from 'chart.js';
 
 import './TreeChart.scss';
+import DateSelector from '../DateSelector/DateSelector';
 
 const TreeChart = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean | any>(false);
-  const [results, setResults] = useState<object | null>(null);
+  const [results, setResults] = useState<{x: Date, y: Number}[] | null>(null);
   const [data, setData] = useState<any>(null);
 
   ChartJS.register(
@@ -51,9 +51,7 @@ const TreeChart = () => {
 
         if (trees?.data?.length > 0) {
           const parsedResults = parseTreesResults(trees.data.slice(0, 500));
-          console.log(parsedResults);
-          
-          const labels = parsedResults.map(result => result.x.toLocaleDateString())
+          const labels = parsedResults.map(result => result.x.toLocaleDateString());
 
           setData({
             labels,
@@ -65,16 +63,13 @@ const TreeChart = () => {
               }
             ],
           });
-          
-          setResults(parsedResults)
-        } else {
-          setError(true)
+
+          setResults(parsedResults);
         }
 
         setLoading(false);
       } catch (err) {
         console.log(err);
-        setError(err);
         setLoading(false);
       }
     })();
@@ -83,7 +78,7 @@ const TreeChart = () => {
   return (
     <div className="treechart">
       {loading && <LoadingSpinner/>}
-
+      {results && data && <DateSelector results={results} setData={setData}/>}
       {results && data && <Bar options={options} data={data}/>}
     </div>
   );

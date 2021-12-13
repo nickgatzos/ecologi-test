@@ -43,7 +43,7 @@ const App = () => {
               <MenuIcon/>
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Responsive drawer
+              Welcome to Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
