@@ -1,5 +1,6 @@
 import './Home.scss';
 import { Typography } from '@mui/material';
+import TreeChart from '../../components/TreeChart/TreeChart';
 
 const Home = () => {
   return (
@@ -15,6 +16,8 @@ const Home = () => {
 
         <div className="gradient"/>
       </div>
+
+      <TreeChart/>
     </div>
   );
 };
